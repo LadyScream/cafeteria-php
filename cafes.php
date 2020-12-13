@@ -11,7 +11,9 @@ include 'coneccion.php';
 
 $sql = "SELECT * FROM cafes";
 $result = $conn->query($sql);
-
+$cod_act = "SELECT cuenta FROM actualizaciones WHERE cod_actualizacion = '1'";
+$res_cod = $conn->query($cod_act);
+$cod = $res_cod->fetch_assoc();
 ?>
 
 <main>
@@ -53,5 +55,15 @@ if ($result->num_rows > 0) {
   </tbody>
 </table>
 </main>
+<script>
+const cod_actualizacion = <?php echo $cod["cuenta"]; ?>;
+setInterval(() => {
+fetch('actualizacion.php').then(res => res.text()).then(text => {
+  if (cod_actualizacion != text) {
+    location.reload();
+  }
+});
+}, 1000);
+</script>
 </body>
 </html>
