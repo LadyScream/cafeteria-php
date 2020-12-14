@@ -9,7 +9,10 @@
 <body>
   <main>
 <?php
+// Si el archivo es llamado con un metodo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Crea y ejecuta una consulta al metodo eliminarCafes con el codigo del cafe
+  // actual
   $add = "CALL eliminarCafes ('". $_POST["cod"] ."')";
   $conn->query($add);
   echo "<h1>Se borró el café.</h1>";

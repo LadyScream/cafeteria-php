@@ -8,6 +8,8 @@
 <body>
 <main>
 
+<!-- Utiliza un formulario que pide nombre de usuario y contraseña y envía la
+información al archivo login.php-->
 <h1>Iniciar Sesión</h1>
   <form action="login.php" method="POST">
     <label for="usuario">Nombre de usuario:</label>
